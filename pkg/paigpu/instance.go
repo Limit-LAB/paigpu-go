@@ -262,6 +262,7 @@ func (c *Client) CreateInstance(ctx context.Context,
 	diskSize int,
 	billingMode string,
 	imageUrl string,
+	networkStorageID string,
 	ports []int,
 	envs []Env,
 ) (*CreateInstanceResponse, error) {
@@ -272,14 +273,15 @@ func (c *Client) CreateInstance(ctx context.Context,
 		portsString = append(portsString, fmt.Sprintf("%d", port))
 	}
 	requestBody := CreateInstanceRequest{
-		Name:        name,
-		ProductId:   productId,
-		GpuNum:      gpuNum,
-		DiskSize:    diskSize,
-		BillingMode: billingMode,
-		ImageUrl:    imageUrl,
-		Ports:       strings.Join(portsString, ","),
-		Envs:        envs,
+		Name:             name,
+		ProductId:        productId,
+		GpuNum:           gpuNum,
+		DiskSize:         diskSize,
+		BillingMode:      billingMode,
+		ImageUrl:         imageUrl,
+		Ports:            strings.Join(portsString, ","),
+		Envs:             envs,
+		NetworkStorageId: networkStorageID,
 	}
 
 	requestBodyBytes, err := json.Marshal(requestBody)
