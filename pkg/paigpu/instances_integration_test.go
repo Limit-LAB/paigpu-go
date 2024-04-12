@@ -4,8 +4,9 @@ import (
 	"context"
 	"os"
 	"testing"
+
+	_ "github.com/joho/godotenv/autoload"
 )
-import _ "github.com/joho/godotenv/autoload"
 
 func TestClient_Instances(t *testing.T) {
 	ctx := context.Background()
@@ -53,6 +54,7 @@ func TestClient_CreateInstance(t *testing.T) {
 	result, err := client.CreateInstance(ctx,
 		"paigpu-go integration test",
 		"23",
+		"75",
 		1,
 		10,
 		"afterusage",

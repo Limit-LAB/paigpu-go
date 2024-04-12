@@ -257,7 +257,8 @@ type CreateInstanceResponse struct {
 
 func (c *Client) CreateInstance(ctx context.Context,
 	name string,
-	productId string,
+	clusterID string,
+	productID string,
 	gpuNum int,
 	diskSize int,
 	billingMode string,
@@ -274,7 +275,8 @@ func (c *Client) CreateInstance(ctx context.Context,
 	}
 	requestBody := CreateInstanceRequest{
 		Name:             name,
-		ProductId:        productId,
+		ClusterId:        clusterID,
+		ProductId:        productID,
 		GpuNum:           gpuNum,
 		DiskSize:         diskSize,
 		BillingMode:      billingMode,
