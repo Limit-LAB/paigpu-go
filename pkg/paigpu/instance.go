@@ -234,21 +234,23 @@ type Env struct {
 	Value string `json:"value"`
 }
 type CreateInstanceRequest struct {
-	Name                     string `json:"name"`
-	ProductId                string `json:"productId"`
-	GpuNum                   int    `json:"gpuNum"`
-	DiskSize                 int    `json:"diskSize"`
-	BillingMode              string `json:"billingMode"`
-	Duration                 int    `json:"duration"`
-	ImageUrl                 string `json:"imageUrl"`
-	ImageAuth                string `json:"imageAuth"`
-	Ports                    string `json:"ports"`
-	Envs                     []Env  `json:"envs"`
-	Command                  string `json:"command"`
-	ClusterId                string `json:"clusterId"`
-	NetworkStorageId         string `json:"networkStorageId"`
-	LocalStorageMountPoint   string `json:"localStorageMountPoint"`
-	NetworkStorageMountPoint string `json:"networkStorageMountPoint"`
+	Name                     string `json:"name,omitempty"`
+	ProductId                string `json:"productId,omitempty"`
+	GpuNum                   int    `json:"gpuNum,omitempty"`
+	DiskSize                 int    `json:"diskSize,omitempty"`
+	BillingMode              string `json:"billingMode,omitempty"`
+	Duration                 int    `json:"duration,omitempty"`
+	ImageUrl                 string `json:"imageUrl,omitempty"`
+	ImageAuth                string `json:"imageAuth,omitempty"`
+	Ports                    string `json:"ports,omitempty"`
+	Envs                     []Env  `json:"envs,omitempty"`
+	Command                  string `json:"command,omitempty"`
+	ClusterId                string `json:"clusterId,omitempty"`
+	NetworkStorageId         string `json:"networkStorageID,omitempty"`
+	LocalStorageMountPoint   string `json:"localStorageMountPoint,omitempty"`
+	NetworkStorageMountPoint string `json:"networkStorageMountPoint,omitempty"`
+	ImageType                string `json:"imageType,omitempty"`
+	ImageID                  string `json:"imageID,omitempty"`
 }
 
 type CreateInstanceResponse struct {
@@ -263,6 +265,8 @@ func (c *Client) CreateInstance(ctx context.Context,
 	diskSize int,
 	billingMode string,
 	imageUrl string,
+	imageType string,
+	imageID string,
 	networkStorageID string,
 	ports []int,
 	envs []Env,
@@ -281,6 +285,8 @@ func (c *Client) CreateInstance(ctx context.Context,
 		DiskSize:         diskSize,
 		BillingMode:      billingMode,
 		ImageUrl:         imageUrl,
+		ImageType:        imageType,
+		ImageID:          imageID,
 		Ports:            strings.Join(portsString, ","),
 		Envs:             envs,
 		NetworkStorageId: networkStorageID,
