@@ -246,7 +246,7 @@ type CreateInstanceRequest struct {
 	Envs                     []Env  `json:"envs,omitempty"`
 	Command                  string `json:"command,omitempty"`
 	ClusterId                string `json:"clusterId,omitempty"`
-	NetworkStorageId         string `json:"networkStorageID,omitempty"`
+	NetworkStorageId         string `json:"networkStorageId,omitempty"`
 	LocalStorageMountPoint   string `json:"localStorageMountPoint,omitempty"`
 	NetworkStorageMountPoint string `json:"networkStorageMountPoint,omitempty"`
 }
