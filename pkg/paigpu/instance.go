@@ -249,8 +249,6 @@ type CreateInstanceRequest struct {
 	NetworkStorageId         string `json:"networkStorageID,omitempty"`
 	LocalStorageMountPoint   string `json:"localStorageMountPoint,omitempty"`
 	NetworkStorageMountPoint string `json:"networkStorageMountPoint,omitempty"`
-	ImageType                string `json:"imageType,omitempty"`
-	ImageID                  string `json:"imageID,omitempty"`
 }
 
 type CreateInstanceResponse struct {
@@ -265,8 +263,7 @@ func (c *Client) CreateInstance(ctx context.Context,
 	diskSize int,
 	billingMode string,
 	imageUrl string,
-	imageType string,
-	imageID string,
+	imageAuth string,
 	networkStorageID string,
 	ports []int,
 	envs []Env,
@@ -285,8 +282,7 @@ func (c *Client) CreateInstance(ctx context.Context,
 		DiskSize:         diskSize,
 		BillingMode:      billingMode,
 		ImageUrl:         imageUrl,
-		ImageType:        imageType,
-		ImageID:          imageID,
+		ImageAuth:        imageAuth,
 		Ports:            strings.Join(portsString, ","),
 		Envs:             envs,
 		NetworkStorageId: networkStorageID,
