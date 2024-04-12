@@ -314,6 +314,11 @@ func (c *Client) CreateInstance(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
+
+	if response.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("create instance, http status %d, response %s", response.StatusCode, responseBody)
+	}
+
 	result := CreateInstanceResponse{}
 	err = json.Unmarshal(responseBody, &result)
 	if err != nil {
