@@ -60,6 +60,8 @@ func TestClient_CreateInstance(t *testing.T) {
 		"afterusage",
 		"image.ppio.cloud/prod-gpucloudpublic/cuda:v11.8",
 		"",
+		"",
+		"",
 		[]int{8888},
 		[]Env{},
 	)
